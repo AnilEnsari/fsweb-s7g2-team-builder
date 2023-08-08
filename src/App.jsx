@@ -9,6 +9,9 @@ function App() {
     { isim: "Veli", email: "veli@example.com", rol: "Backend Developer" },
   ];
   const [teamMembers, setTeamMembers] = useState(myMembers);
+  const addMembers = (member) => {
+    setTeamMembers([...teamMembers, member]);
+  };
   return (
     <div>
       <h1>Team Members</h1>
@@ -19,7 +22,7 @@ function App() {
           </li>
         ))}
       </ul>
-      <Form teamMembers={teamMembers} setTeamMembers={setTeamMembers} />
+      <Form addMembers={addMembers} teamMembers={teamMembers} />
     </div>
   );
 }

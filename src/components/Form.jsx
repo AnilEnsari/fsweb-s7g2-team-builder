@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 function Form(props) {
+  const { addMembers } = props;
   const [formName, setFormName] = useState("");
   const [formEmail, setFormEmail] = useState("");
   const [formRol, setFormRol] = useState("");
@@ -14,21 +15,14 @@ function Form(props) {
   const rolHandler = (event) => {
     setFormRol(event.target.value);
   };
+  const formMember = { isim: formName, email: formEmail, rol: formRol };
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.setTeamMembers([
-      ...props.teamMembers,
-      {
-        isim: formName,
-        email: formEmail,
-        rol: formRol,
-      },
-    ]);
-    console.log(props.teamMembers);
+    addMembers(formMember);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form>
       <label htmlFor="isim">isim</label>
       <hr></hr>
       <input id="isim" type="text" name="isim" onChange={nameHandler} />
@@ -40,7 +34,9 @@ function Form(props) {
       <label htmlFor="rol">rol</label>
       <hr></hr>
       <input id="rol" type="text" name="rol" onChange={rolHandler} />
-      <button type="submit">Gönder</button>
+      <button type="submit" onClick={handleSubmit}>
+        Gönder
+      </button>
     </form>
   );
 }
