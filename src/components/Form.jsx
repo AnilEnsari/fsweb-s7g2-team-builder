@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function Form(props) {
-  const { addMembers } = props;
+  const { addMembers, duzenlenecekUye, setDuzenlenecekUye } = props;
   const [formName, setFormName] = useState("");
   const [formEmail, setFormEmail] = useState("");
   const [formRol, setFormRol] = useState("");
+  useEffect(() => {
+    {
+      setDuzenlenecekUye(duzenlenecekUye);
+    }
+  }, [duzenlenecekUye]);
 
   const nameHandler = (event) => {
     setFormName(event.target.value);
@@ -23,17 +28,35 @@ function Form(props) {
 
   return (
     <form>
-      <label htmlFor="isim">isim</label>
+      <label htmlFor="isim">İsim</label>
       <hr></hr>
-      <input id="isim" type="text" name="isim" onChange={nameHandler} />
+      <input
+        id="isim"
+        type="text"
+        name="isim"
+        // value={duzenlenecekUye.isim}
+        onChange={nameHandler}
+      />
       <hr></hr>
       <label htmlFor="email">Email</label>
       <hr></hr>
-      <input id="email" type="email" name="email" onChange={emailHandler} />
+      <input
+        id="email"
+        type="email"
+        name="email"
+        // value={duzenlenecekUye.email}
+        onChange={emailHandler}
+      />
       <hr></hr>
-      <label htmlFor="rol">rol</label>
+      <label htmlFor="rol">Rol</label>
       <hr></hr>
-      <input id="rol" type="text" name="rol" onChange={rolHandler} />
+      <input
+        id="rol"
+        type="text"
+        name="rol"
+        // value={duzenlenecekUye.rol}
+        onChange={rolHandler}
+      />
       <button type="submit" onClick={handleSubmit}>
         Gönder
       </button>
