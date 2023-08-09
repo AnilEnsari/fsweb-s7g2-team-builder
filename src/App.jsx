@@ -4,9 +4,17 @@ import Form from "./components/Form";
 
 function App() {
   const myMembers = [
-    { isim: "Anıl", email: "anil@example.com", rol: "Fullstack Developer" },
-    { isim: "Ali", email: "ali@example.com", rol: "Frontend Developer" },
-    { isim: "Veli", email: "veli@example.com", rol: "Backend Developer" },
+    { isim: "Mauro Icardi", email: "mauro@galatasaray.com", rol: "Striker" },
+    {
+      isim: "Wilfred Zaha",
+      email: "zaha@galatasaray.com",
+      rol: "Inside Forward",
+    },
+    {
+      isim: "Fernando Muslera",
+      email: "nando@galatasaray.com",
+      rol: "GoalKeeper",
+    },
   ];
   const [teamMembers, setTeamMembers] = useState(myMembers);
   const [duzenlenecekUye, setDuzenlenecekUye] = useState({
@@ -31,7 +39,6 @@ function App() {
       </ul>
       <Form
         addMembers={addMembers}
-        teamMembers={teamMembers}
         duzenlenecekUye={duzenlenecekUye}
         setDuzenlenecekUye={setDuzenlenecekUye}
       />

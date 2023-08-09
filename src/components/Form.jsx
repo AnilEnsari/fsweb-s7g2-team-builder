@@ -5,9 +5,19 @@ function Form(props) {
   const [formName, setFormName] = useState("");
   const [formEmail, setFormEmail] = useState("");
   const [formRol, setFormRol] = useState("");
+
   useEffect(() => {
     {
       setDuzenlenecekUye(duzenlenecekUye);
+      if (duzenlenecekUye.isim) {
+        setFormName(duzenlenecekUye.isim);
+      }
+      if (duzenlenecekUye.email) {
+        setFormEmail(duzenlenecekUye.email);
+      }
+      if (duzenlenecekUye.rol) {
+        setFormRol(duzenlenecekUye.rol);
+      }
     }
   }, [duzenlenecekUye]);
 
@@ -27,7 +37,7 @@ function Form(props) {
   };
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <label htmlFor="isim">İsim</label>
       <hr></hr>
       <input
@@ -35,6 +45,8 @@ function Form(props) {
         type="text"
         name="isim"
         // value={duzenlenecekUye.isim}
+        value={formName}
+        // placeholder={duzenlenecekUye.isim}
         onChange={nameHandler}
       />
       <hr></hr>
@@ -44,7 +56,8 @@ function Form(props) {
         id="email"
         type="email"
         name="email"
-        // value={duzenlenecekUye.email}
+        // placeholder={duzenlenecekUye.email}
+        value={formEmail}
         onChange={emailHandler}
       />
       <hr></hr>
@@ -54,12 +67,11 @@ function Form(props) {
         id="rol"
         type="text"
         name="rol"
-        // value={duzenlenecekUye.rol}
+        value={formRol}
         onChange={rolHandler}
+        // placeholder={duzenlenecekUye.rol}
       />
-      <button type="submit" onClick={handleSubmit}>
-        Gönder
-      </button>
+      <button type="submit">Gönder</button>
     </form>
   );
 }
